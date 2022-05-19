@@ -8,14 +8,14 @@ namespace Mediana
     {
         static void Main(string[] args)
         {
-            IList<long> list = CreateList();
+            IList<long> list = CreateList(6);
             using (IMedianCalculator median = new MedianCalculator(list))
             {
                 Console.WriteLine($"Numeros: {median.ShowNumbers()}");
                 Console.WriteLine($"Mediana: {median.FindMedian()}");
             }
 
-            IList<long> oddList = CreateOddList();
+            IList<long> oddList = CreateList(5);
             using (IMedianCalculator oddMedian = new MedianCalculator(oddList))
             {
                 Console.WriteLine($"Numeros: {oddMedian.ShowNumbers()}");
@@ -25,20 +25,17 @@ namespace Mediana
             Console.ReadLine();
         }
 
-        private static IList<long> CreateOddList()
+        private static IList<long> CreateList(int size)
         {
-            return new List<long>
-            {
-                1,2,3,4,5
-            };
-        }
+            var list = new List<long>();
+            var random = new Random(size);
 
-        private static IList<long> CreateList()
-        {
-            return new List<long>
+            for (var i = 0; i < size; i++)
             {
-                1,2,3,4,5,6
-            };
+                list.Add(random.Next());
+            }
+
+            return list;
         }
     }
 }

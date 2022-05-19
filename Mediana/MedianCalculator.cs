@@ -51,7 +51,7 @@ namespace Mediana
         /// <returns></returns>
         public string ShowNumbers()
         {
-            return string.Join(',', Numbers);
+            return string.Join(',', Sort());
         }
 
         private IList<long> Sort()
